@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="practiceApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Form Validations</title>
+    <link rel="stylesheet" href="style/mystyle.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+
+    <div ng-controller="mainController">
+      <form name="myForm" novalidate ng-submit="submitForm(myForm.$valid)">
+        <div class="myForm">
+          <table class="myForm">
+            <thead>
+              <tr>
+                <th>
+                  <h3>Patient infortmation</h3>
+                </th>
+                <th>
+                  <h3>Responsible Party</h3>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>
+                  <p>
+                    <div class="field">
+                      <label>First name:</label>
+                      <input type="text" ng-model="user.firstname" name="userFirstName" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userFirstName.$touched">
+                        <span ng-show="myForm.userFirstName.$error.required">*Tell us your first name.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Last Name:</label>
+                      <input type="text" ng-model="user.lastname" name="userLastName" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userLastName.$touched">
+                        <span ng-show="myForm.userLastName.$error.required">*Tell us your last name.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Email:</label>
+                      <input type="text" ng-model="user.email" name="userEmail" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userEmail.$touched">
+                        <span ng-show="myForm.userEmail.$error.required">*Tell us your Email</span>
+                        <span ng-show="myForm.userEmail.$error.email">*This is not a valid email.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Employer:</label>
+                      <input type="text" ng-model="user.employer" name="userEmployer" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userEmployer.$touched">
+                        <span ng-show="myForm.userEmployer.$error.required">*Tell us your Employer</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Mailing Address:</label>
+                      <input type="text" ng-model="user.address" name="userAddress" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userAddress.$touched">
+                        <span ng-show="myForm.userAddress.$error.required">*Tell us your Address</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Phone:</label>
+                      <input type="text" ng-model="user.phone" name="userPhone" required="" />
+                      <div ng-show="myForm.$submitted || myForm.userPhone.$touched">
+                        <span ng-show="myForm.userPhone.$error.required">*Tell us your Phone</span>
+                      </div>
+                    </div>
+                  </p>
+
+              </div>
+              </td>
+
+              <td>
+                <div class="field">
+                  <label>Different than patient:</label>
+                  <input type="checkbox" ng-model="party.same" name="userSame" />
+                </div>
+                <div ng-if="party.same">
+                  <p>
+                    <div class="field">
+                      <label>First name:</label>
+                      <input type="text" ng-model="party.firstname" name="partyFirstName" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyFirstName.$touched) && party.same">
+                        <span ng-show="myForm.partyFirstName.$error.required">*Tell us your first name.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Last Name:</label>
+                      <input type="text" ng-model="party.lastname" name="partyLastName" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyLastName.$touched) && party.same">
+                        <span ng-show="myForm.partyLastName.$error.required">*Tell us your last name.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Email:</label>
+                      <input type="text" ng-model="party.email" name="partyEmail" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyEmail.$touched) && party.same">
+                        <span ng-show="myForm.partyEmail.$error.required">*Tell us your Email</span>
+                        <span ng-show="myForm.partyEmail.$error.email">*This is not a valid email.</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Employer:</label>
+                      <input type="text" ng-model="party.employer" name="partyEmployer" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyEmployer.$touched) && party.same">
+                        <span ng-show="myForm.partyEmployer.$error.required">*Tell us your Employer</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Mailing Address:</label>
+                      <input type="text" ng-model="party.address" name="partyAddress" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyAddress.$touched) && party.same">
+                        <span ng-show="myForm.partyAddress.$error.required">*Tell us your Address</span>
+                      </div>
+                    </div>
+                  </p>
+
+                  <p>
+                    <div class="field">
+                      <label>Phone:</label>
+                      <input type="text" ng-model="party.phone" name="partyPhone" required="" />
+                      <div ng-show="(myForm.$submitted || myForm.partyPhone.$touched) && party.same">
+                        <span ng-show="myForm.partyPhone.$error.required">*Tell us your Phone</span>
+                      </div>
+                    </div>
+                  </p>
+              </div>
+                </div>
+              <p>
+                <input type="submit"  value="Submit" />
+              </p>
+              </td>
+            </tbody>
+          </table>
+      </form>
+
+      <div class="center" ng-show="submitted">
+        <h3>Submitted Information for Patient:</h3>
+        <div class="jsonstuff">
+           <h4>{{user | json}}</h4>
+        </div>
+        <h3>Submitted Information for Patient Party: </h3>
+        <div class="jsonstuff">
+          <h4>{{party | json}}</h4>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
