@@ -11,7 +11,6 @@
   </head>
   <body>
 
-
     <div ng-controller="mainController">
       <form name="myForm" novalidate ng-submit="submitForm(myForm.$valid)">
         <div class="myForm">
@@ -51,7 +50,7 @@
                   <p>
                     <div class="field">
                       <label>Email:</label>
-                      <input type="text" ng-model="user.email" name="userEmail" required="" />
+                      <input type="email" ng-model="user.email" name="userEmail" required="" />
                       <div ng-show="myForm.$submitted || myForm.userEmail.$touched">
                         <span ng-show="myForm.userEmail.$error.required">*Tell us your Email</span>
                         <span ng-show="myForm.userEmail.$error.email">*This is not a valid email.</span>
@@ -82,8 +81,9 @@
                   <p>
                     <div class="field">
                       <label>Phone:</label>
-                      <input type="text" ng-model="user.phone" name="userPhone" required="" />
+                      <input type="text" ng-model="user.phone" name="userPhone" required="" phone-number />
                       <div ng-show="myForm.$submitted || myForm.userPhone.$touched">
+                        <span ng-show="myForm.userPhone.$error.phonevalid">Must be a 10-digit number.</span>
                         <span ng-show="myForm.userPhone.$error.required">*Tell us your Phone</span>
                       </div>
                     </div>
@@ -121,7 +121,7 @@
                   <p>
                     <div class="field">
                       <label>Email:</label>
-                      <input type="text" ng-model="party.email" name="partyEmail" required="" />
+                      <input type="email" ng-model="party.email" name="partyEmail" required="" />
                       <div ng-show="(myForm.$submitted || myForm.partyEmail.$touched) && party.same">
                         <span ng-show="myForm.partyEmail.$error.required">*Tell us your Email</span>
                         <span ng-show="myForm.partyEmail.$error.email">*This is not a valid email.</span>
@@ -152,9 +152,10 @@
                   <p>
                     <div class="field">
                       <label>Phone:</label>
-                      <input type="text" ng-model="party.phone" name="partyPhone" required="" />
-                      <div ng-show="(myForm.$submitted || myForm.partyPhone.$touched) && party.same">
-                        <span ng-show="myForm.partyPhone.$error.required">*Tell us your Phone</span>
+                      <input type="text" ng-model="party.phone" name="partyPhone" required="" phone-number />
+                      <div ng-show="myForm.$submitted || myForm.userPhone.$touched">
+                        <span ng-show="myForm.userPhone.$error.phonevalid">Must be a 10-digit number.</span>
+                        <span ng-show="myForm.userPhone.$error.required">*Tell us your Phone</span>
                       </div>
                     </div>
                   </p>
